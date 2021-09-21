@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Aqui o user faz o request para novos posts</h1>
+    <h1>Insira o link da imagem</h1>
     <div>
-      <input type="file" @change="onFileSelected">
+      <input type="text" @change="onLink">
       <button @click="upload($auth.user.nickname)">Enviar</button>
     </div>
   </div>
@@ -16,15 +16,15 @@ export default {
   name: "request",
   data() {
     return {
-      selectedFile: null,
+      link: null,
       // file: null,
     }
   },
   methods: {
-    onFileSelected(event) {
-      this.selectedFile = event.target.files[0]
+    onLink(event) {
+      this.link = event.target.value
     },
-    upload( current_user) {
+    upload(current_user) {
       const headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
         'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryq08SQtIUmOp2mBcW'
@@ -32,18 +32,17 @@ export default {
       const fd = new FormData();
       fd.append("who_posted", current_user)
       fd.append("approved", false)
-      fd.append('image', this.selectedFile, this.selectedFile.name)
+      fd.append('image', this.link)
       fd.append('likes', 0)
       fd.append('liked_by', [])
       fd.append('comments', [])
       console.log(fd)
-      console.log(fd.getAll('image'))
       axios.post(endpoint + 'posts/', fd, {
         headers: headers
       }).then(res => {
         console.log(res)
       })
-      location.assign('https://sistema-galeria-frontend.vercel.app/feed')
+      location.reload()
       alert('Sua foto foi enviada para avaliação!')
     }
   }
