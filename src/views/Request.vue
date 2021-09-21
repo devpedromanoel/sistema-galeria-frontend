@@ -42,7 +42,6 @@ export default {
       }).then(res => {
         console.log(res)
       })
-      location.reload()
       alert('Sua foto foi enviada para avaliação!')
     }
   }
