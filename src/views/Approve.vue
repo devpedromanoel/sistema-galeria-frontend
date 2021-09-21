@@ -15,7 +15,7 @@
 <script>
 import axios from 'axios'
 
-const endpoint = 'http://localhost:8000/api/'
+const endpoint = 'https://nameless-tor-82105.herokuapp.com/api/'
 export default {
   name: 'approve',
   data() {

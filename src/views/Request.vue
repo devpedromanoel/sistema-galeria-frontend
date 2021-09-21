@@ -11,7 +11,7 @@
 <script>
 import axios from 'axios'
 
-const endpoint = 'http://localhost:8000/api/'
+const endpoint = 'https://nameless-tor-82105.herokuapp.com/api/'
 export default {
   name: "request",
   data() {
@@ -43,7 +43,7 @@ export default {
       }).then(res => {
         console.log(res)
       })
-      location.assign('http://localhost:8080/feed')
+      location.assign('https://sistema-galeria-frontend.vercel.app/feed')
       alert('Sua foto foi enviada para avaliação!')
     }
   }
