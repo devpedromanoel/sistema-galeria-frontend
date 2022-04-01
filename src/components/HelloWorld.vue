@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>Galeria</h1>
     <p v-if="$auth.isAuthenticated"> Você está logado!</p>
-    <p v-if="!$auth.isAuthenticated"> Você não está logado!</p>
+    <div v-if="!$auth.isAuthenticated"><div><h3>Você não está logado!</h3></div><div>Para entrar como administrador, use "esposa" como username e "12345678" como senha.</div><div>Para entrar como usuário comum, use "convidado" como username e "12345678" como senha.</div>
   </div>
 </template>
 
